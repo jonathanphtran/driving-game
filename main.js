@@ -1,9 +1,10 @@
 var $car = document.querySelector('.car');
 var $body = document.querySelector('body');
 var $carContainer = document.querySelector('.carContainer');
-var movePixel = 0;
 var carStarted = false;
 var intervalId;
+var movePixelR = 0;
+var movePixelD = 0;
 
 function rotate(e) {
   if (e.code === 'ArrowDown') {
@@ -18,8 +19,19 @@ function rotate(e) {
 }
 
 function moveCar(e) {
-  movePixel += 5;
-  $carContainer.style.left = `${movePixel}px`;
+  if ($car.className === 'car') {
+    movePixelR += 5;
+    $carContainer.style.left = `${movePixelR}px`;
+  } else if ($car.className === 'car rotateDown') {
+    movePixelD += 5;
+    $carContainer.style.top = `${movePixelD}px`;
+  } else if ($car.className === 'car rotateLeft') {
+    movePixelR -= 5;
+    $carContainer.style.left = `${movePixelR}px`;
+  } else if ($car.className === 'car rotateUp') {
+    movePixelD -= 5;
+    $carContainer.style.top = `${movePixelD}px`;
+  }
 }
 
 function startOrStopCar(e) {
