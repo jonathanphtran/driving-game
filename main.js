@@ -19,18 +19,22 @@ function rotate(e) {
 }
 
 function moveCar(e) {
-  if ($car.className === 'car') {
+  if ($car.className === 'car' && movePixelR < window.innerWidth - 160) {
     movePixelR += 5;
     $carContainer.style.left = `${movePixelR}px`;
-  } else if ($car.className === 'car rotateDown') {
+  } else if ($car.className === 'car rotateDown' && movePixelD < window.innerHeight - 160) {
     movePixelD += 5;
     $carContainer.style.top = `${movePixelD}px`;
-  } else if ($car.className === 'car rotateLeft') {
+  } else if ($car.className === 'car rotateLeft' && movePixelR > 0) {
     movePixelR -= 5;
     $carContainer.style.left = `${movePixelR}px`;
-  } else if ($car.className === 'car rotateUp') {
+  } else if ($car.className === 'car rotateUp' && movePixelD > 0) {
     movePixelD -= 5;
     $carContainer.style.top = `${movePixelD}px`;
+  }
+  if (movePixelR < 0 || movePixelD < 0 || movePixelR > window.innerWidth - 160 || movePixelD > window.innerHeight - 160) {
+    clearInterval(intervalId);
+    carStarted = false;
   }
 }
 
