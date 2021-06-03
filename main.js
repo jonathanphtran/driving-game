@@ -2,6 +2,8 @@ var $car = document.querySelector('.car');
 var $body = document.querySelector('body');
 var $carContainer = document.querySelector('.carContainer');
 var movePixel = 0;
+var carStarted = false;
+var intervalId;
 
 function rotate(e) {
   if (e.code === 'ArrowDown') {
@@ -16,16 +18,19 @@ function rotate(e) {
 }
 
 function moveCar(e) {
-  if (movePixel > 1000) return;
   movePixel += 5;
   $carContainer.style.left = `${movePixel}px`;
 }
 
-function startCar(e) {
-  if (e.code === 'Space') {
-    setInterval(moveCar, 16);
+function startOrStopCar(e) {
+  if (e.code === 'Space' && carStarted === false) {
+    intervalId = setInterval(moveCar, 16);
+    carStarted = true;
+  } else if (e.code === 'Space' && carStarted === true) {
+    clearInterval(intervalId);
+    carStarted = false;
   }
 }
 
 $body.addEventListener('keydown', rotate);
-$body.addEventListener('keydown', startCar);
+$body.addEventListener('keydown', startOrStopCar);
