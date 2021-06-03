@@ -18,7 +18,7 @@ function rotate(e) {
 function moveCar(e) {
   if (movePixel > 1000) return;
   movePixel += 5;
-  $carContainer.style.transform = `translate(${movePixel}px)`;
+  $carContainer.style.left = `${movePixel}px`;
 }
 
 function startCar(e) {

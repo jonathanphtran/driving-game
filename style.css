@@ -7,6 +7,10 @@ body {
   background-color: green;
 }
 
+.carContainer {
+  position: absolute;
+}
+
 .car {
   width: 10rem;
   height: 10rem;
