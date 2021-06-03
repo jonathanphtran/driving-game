@@ -27,12 +27,3 @@ body {
 .moveCar {
   transform: translate(20px);
 }
-
-/* .moveCar {
-  transition-property: transform;
-  transition-duration: 5s;
-}
-
-.moveCar:hover {
-  transform: translate(400px);
-} */
