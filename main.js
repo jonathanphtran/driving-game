@@ -1,5 +1,7 @@
 var $car = document.querySelector('.car');
 var $body = document.querySelector('body');
+var $carContainer = document.querySelector('.carContainer');
+var movePixel = 0;
 
 function rotate(e) {
   if (e.code === 'ArrowDown') {
@@ -13,4 +15,16 @@ function rotate(e) {
   }
 }
 
+function moveCar(e) {
+  movePixel += 5;
+  $carContainer.style.transform = `translate(${movePixel}px)`;
+}
+
+function startCar(e) {
+  if (e.code === 'Space') {
+    setInterval(moveCar, 16);
+  }
+}
+
 $body.addEventListener('keydown', rotate);
+$body.addEventListener('keydown', startCar);
