@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: green;
+}
+
+img {
+  width: 10rem;
+  height: 10rem;
+}
